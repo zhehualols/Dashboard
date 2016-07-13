@@ -1,0 +1,15 @@
+body {
+    background-color: aliceblue;
+}
+
+select {
+    position: relative;
+    top: 80px;
+    right: 230px;
+}
+
+button {
+    position: relative;
+    top: 80px;
+    right: 230px;
+}

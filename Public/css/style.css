@@ -1,0 +1,21 @@
+body {
+    background-color: whitesmoke;
+}
+
+div.edid-button {
+    position: relative;
+    left: 70px;
+    top: 80px
+}
+
+div.ir-button {
+    position: relative;
+    left: 500px;
+    bottom: 130px
+}
+
+div.ana-button {
+    position: relative;
+    left: 70px;
+    bottom: 40px;
+}
