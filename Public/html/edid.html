@@ -4,47 +4,59 @@
 <head>
     <link href="/static/css/edid.css" rel="stylesheet">
 
-    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
-    <script type='text/javascript'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+    <script>
         $(document).ready(function() {
-            $('button').on('click', function() {
-                var request = $.ajax({
-                    url: '/EDID'
-                });
-                request.done(function(reponse) {
-                    $('#DisplayAll').text(reponse.DisplayAll);
-                });
-                request.fail(function(jqXHR, textStatus) {
-                    alert('Request failed: ' + textStatus);
-                });
-            })
+            $("#DisplayAll").click(function() {
+                $.getJSON('/static/files/data.json',
+                    function(data) {
+                        for (var i = 0; i < data.length; i++) {
+                            var tr = ("<tr>");
+                            var td1 = ("<td>" + data[i]["id"] + "</td>");
+                            var td2 = ("<td>" + data[i]["prd_manufacturer_name"] + "</td>");
+                            var td3 = ("<td>" + data[i]["prd_code"] + "</td>");
+                            var td4 = ("<td>" + data[i]["prd_serial_no"] + "</td>");
+                            var td5 = ("<td>" + data[i]["prd_week_of_manufacture"] + "</td>");
+                            var td6 = ("<td>" + data[i]["prd_year_of_manufacture"] + "</td>");
+                            var td7 = ("<td>" + data[i]["str_version_no"] + "</td>");
+                            var td8 = ("<td>" + data[i]["str_revision_no"] + "</td>");
+                            var td9 = ("<td>" + data[i]["monitor_name_tag"] + "</td></tr>");
+                            $("#tbody").append(tr + td1 + td2 + td3 + td4 + td5 + td6 + td7 + td8 + td9)
+                        }
+                    });
+            });
         });
 
     </script>
 
-</head>
-<form action="/EDID" method="get">
+    </script>
 
-    <body>
-        <a href="http://127.0.0.1:8080">
-            <img src="/static/Images/logo.png" style="border:0">
-        </a>
-        <input class="Search"></input>
-        <button class="Search-button" id="search" type="button">Search</button>
-        <button class="DisplayAll" id='DisplayAll' type="button">Display All Data!</button>
-        <button class="export" id='export' type="button">Export</button>
-        <table>
-            <th>%s</th>
-            <th>%s</th>
-            <th>%s</th>
-            <th>%s</th>
-            <th>%s</th>
-            <th>%s</th>
-            <th>%s</th>
-            <th>%s</th>
-            <th>%s</th>
-        </table>
-    </body>
-</form>
+</head>
+
+<body>
+    <a href="/static/html/index.html">
+        <img src="/static/Images/logo.png" style="border:0">
+    </a>
+    <input class="Search"></input>
+    <button class="Search-button" id="search" type="button">Search</button>
+    <button class="DisplayAll" id='DisplayAll' type="button">Display All Data!</button>
+    <button class="export" id='export' type="button">Export</button>
+    <table id="EDID_table" style="width:100%">
+        <thead>
+            <th>Id</th>
+            <th>prd_manufacturer_name</th>
+            <th>prd_code</th>
+            <th>prd_serial_no</th>
+            <th>prd_week_of_manufacture</th>
+            <th>prd_year_of_manufacture</th>
+            <th>str_version_no</th>
+            <th>str_revision_no</th>
+            <th>monitor_name_tag</th>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+</body>
 
 </html>

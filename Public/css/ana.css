@@ -13,3 +13,10 @@ button {
     top: 80px;
     right: 230px;
 }
+
+div {
+    border: 3px solid #73AD21;
+    position: absolute;
+    bottom: 120px;
+    left: 160px;
+}
