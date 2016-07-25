@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <link href="/static/css/edid.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
@@ -10,6 +10,7 @@
     <script>
         $(document).ready(function() {
             $("#DisplayAll").click(function() {
+                $("#EDID_table").show();
                 $.getJSON('/static/files/data.json',
                     function(data) {
                         for (var i = 0; i < data.length; i++) {
@@ -31,18 +32,16 @@
 
     </script>
 
-    </script>
-
 </head>
 
 <body>
     <a href="/static/html/index.html">
         <img src="/static/Images/logo.png" style="border:0">
     </a>
-    <input class="Search"></input>
-    <button class="Search-button" id="search" type="button">Search</button>
-    <button class="DisplayAll" id='DisplayAll' type="button">Display All Data!</button>
-    <button class="export" id='export' type="button">Export</button>
+    <input type="text" id="input">
+    <button id="search" type="button">Search</button>
+    <button id='DisplayAll' type="button">Display All Data!</button>
+    <button id='export' type="button">Export</button>
     <table id="EDID_table" style="width:100%">
         <thead>
             <th>Id</th>
